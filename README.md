@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 UAE Home Services Platform
 
-## Getting Started
+Une plateforme SaaS moderne pour connecter les prestataires de services à domicile avec les clients aux Émirats Arabes Unis.
 
-First, run the development server:
+## 🚀 Fonctionnalités Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Pour les Clients
+
+- **Recherche intuitive** : Trouvez rapidement des prestataires par service, localisation et disponibilité
+- **Réservation simplifiée** : Réservez en quelques clics avec prix transparent
+- **Paiement sécurisé** : Intégration de solutions de paiement locales et internationales
+- **Suivi en temps réel** : Notifications et communication directe avec les prestataires
+- **Système d'avis** : Notations et commentaires pour maintenir la qualité
+
+### Pour les Prestataires
+
+- **Profil professionnel** : Mise en valeur de vos services et tarifs
+- **Gestion de planning** : Calendrier intelligent avec synchronisation
+- **Tableau de bord financier** : Suivi des revenus et des commissions
+- **Notifications instantanées** : Alertes pour nouvelles réservations
+- **Vérification d'identité** : Processus de validation pour instaurer la confiance
+
+### Pour les Administrateurs
+
+- **Dashboard complet** : Vue d'ensemble de la plateforme
+- **Gestion des utilisateurs** : Modération et validation des comptes
+- **Analytics avancées** : Rapports détaillés et métriques de performance
+- **Support client** : Outils de gestion des litiges et FAQ
+
+## 🛠 Stack Technique
+
+### Frontend & Backend
+
+- **Framework** : Next.js 14 (App Router)
+- **Langage** : TypeScript
+- **Styling** : Tailwind CSS + shadcn/ui
+- **Authentification** : NextAuth.js
+
+### Base de Données & Services
+
+- **Database** : MongoDB Atlas (Free Tier)
+- **File Storage** : Vercel Blob Storage
+- **Email** : Resend (Free Tier)
+- **Maps** : Google Maps API
+- **Payments** : Stripe + Telr (UAE local)
+
+### Déploiement & Infrastructure
+
+- **Hosting** : Vercel (Free Plan)
+- **Domain** : Vercel Domains
+- **Analytics** : Vercel Analytics
+- **Monitoring** : Vercel Speed Insights
+
+## 🏗 Architecture
+
+```
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── (auth)/            # Routes d'authentification
+│   │   ├── (client)/          # Interface client
+│   │   ├── (provider)/        # Interface prestataire
+│   │   ├── (admin)/           # Dashboard admin
+│   │   └── api/               # API Routes
+│   ├── components/            # Composants réutilisables
+│   │   ├── ui/                # shadcn/ui components
+│   │   ├── forms/             # Formulaires
+│   │   ├── layout/            # Layout components
+│   │   └── features/          # Composants métier
+│   ├── lib/                   # Utilitaires et configurations
+│   │   ├── auth.ts           # Configuration NextAuth
+│   │   ├── db.ts             # Connexion MongoDB
+│   │   ├── validations/       # Schémas Zod
+│   │   └── utils.ts          # Fonctions utilitaires
+│   ├── types/                 # Types TypeScript
+│   └── hooks/                 # Custom React hooks
+├── public/                    # Assets statiques
+└── prisma/                   # Schémas de base de données (optionnel)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌍 Fonctionnalités Locales UAE
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Langues** : Anglais et Arabe (RTL support)
+- **Devise** : Dirham des Émirats (AED)
+- **Paiements locaux** : Intégration Telr
+- **Géolocalisation** : Focus sur les 7 émirats
+- **Conformité** : Respect des réglementations locales
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Installation et Démarrage
 
-## Learn More
+### Prérequis
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18+
+- npm ou yarn
+- Compte MongoDB Atlas (gratuit)
+- Compte Vercel (gratuit)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Cloner le repository
+git clone https://github.com/votre-username/uae-home-services.git
+cd uae-home-services
 
-## Deploy on Vercel
+# Installer les dépendances
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Configurer les variables d'environnement
+cp .env.example .env.local
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Démarrer en développement
+npm run dev
+```
+
+### Variables d'Environnement
+
+```env
+# Database
+MONGODB_URI=mongodb+srv://...
+
+# Auth
+NEXTAUTH_SECRET=your-secret-key
+NEXTAUTH_URL=http://localhost:3000
+
+# OAuth Providers
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+
+# Payment
+STRIPE_SECRET_KEY=...
+STRIPE_PUBLISHABLE_KEY=...
+TELR_STORE_ID=...
+TELR_AUTH_KEY=...
+
+# Maps
+GOOGLE_MAPS_API_KEY=...
+
+# Email
+RESEND_API_KEY=...
+```
+
+## 📱 Fonctionnalités par Version
+
+### Phase 1 - MVP (2-3 mois)
+
+- ✅ Authentification (Google, Email)
+- ✅ Profils clients et prestataires
+- ✅ Système de réservation basique
+- ✅ Paiements Stripe
+- ✅ Interface responsive
+
+### Phase 2 - Croissance (1-2 mois)
+
+- 🔄 Application mobile (PWA)
+- 🔄 Système de notifications
+- 🔄 Chat en temps réel
+- 🔄 Géolocalisation avancée
+- 🔄 Intégration Telr
+
+### Phase 3 - Expansion (2-3 mois)
+
+- ⏳ Multi-langues (AR/EN)
+- ⏳ Analytics avancées
+- ⏳ API publique
+- ⏳ Programme de fidélité
+- ⏳ Marketplace étendu
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push sur la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 📞 Contact
+
+- **Email** : contact@uae-homeservices.com
+- **Website** : https://uae-homeservices.vercel.app
+- **Support** : https://uae-homeservices.vercel.app/support
+
+---
+
+**Made with ❤️ for the UAE community**
